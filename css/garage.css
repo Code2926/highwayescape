@@ -1,0 +1,167 @@
+:root{
+  --bg:#072033;
+  --panel:#0f2434;
+  --glow:#00eaff;
+  --muted:#769fb0;
+  --coin:#ffd24d;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  height:100%;
+  font-family:'Orbitron',sans-serif;
+  background:linear-gradient(180deg,#022233 0%, #052b3a 100%);
+  color:#bfefff;
+}
+
+.app{
+  max-width:420px;
+  margin:20px auto;
+  padding:20px;
+  position:relative;
+}
+
+/* 🔙 Back Arrow */
+.back-arrow{
+  position:absolute;
+  top:8px;
+  left:8px;
+  width:42px;
+  height:42px;
+  cursor:pointer;
+}
+.back-arrow img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+/* Move garage slightly down */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:40px;
+  margin-bottom:14px;
+}
+
+.title{font-size:36px;color:var(--glow);}
+.coins{display:flex;align-items:center;gap:8px;font-weight:700;}
+.coins .dot img{width:24px;height:24px;}
+
+.panel{
+  background:rgba(15,36,52,0.85);
+  border-radius:18px;
+  padding:12px;
+}
+
+.tabs{display:flex;gap:10px;margin-bottom:12px;}
+.tab{flex:1;text-align:center;padding:10px 6px;border-radius:12px;color:#9fdcff;font-weight:700;cursor:pointer;}
+.tab.active{background:rgba(0,230,255,0.1);color:var(--glow);}
+
+.content{padding:10px 2px 0 2px;}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  padding:8px;
+  margin-bottom:12px;
+}
+.scrollable{
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:10px;
+}
+
+.car, .road{
+  position:relative;
+  background:#0f2434;
+  border-radius:12px;
+  height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  overflow:hidden;
+  border:2px solid rgba(0,0,0,0.25);
+  transition:all 0.2s ease;
+}
+.car img, .road img{
+  width:90%;
+  height:90%;
+  object-fit:contain;
+}
+
+.car.locked, .road.locked{filter:grayscale(60%) brightness(0.7);opacity:0.8;cursor:default;}
+.car.selected, .road.selected{box-shadow:0 10px 20px rgba(0,200,255,0.2);border:2px solid var(--glow);}
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.5);
+  color:#fff;
+  font-size:15px;
+  text-align:center;
+  padding:4px;
+}
+
+.big-btn{
+  background:linear-gradient(180deg, rgba(0,230,255,0.12), rgba(0,200,255,0.05));
+  border-radius:12px;
+  padding:14px;
+  text-align:center;
+  font-weight:700;
+  color:var(--glow);
+  border:2px solid rgba(0,230,255,0.14);
+  cursor:pointer;
+  margin-bottom:6px;
+}
+.big-btn.secondary{
+  background:linear-gradient(180deg, rgba(255,87,87,0.08), rgba(255,87,87,0.02));
+  color:#ffdfe0;
+  border:2px solid rgba(255,87,87,0.12);
+}
+.big-btn:active{transform:translateY(2px);}
+
+.note{font-size:12px;color:var(--muted);text-align:center;}
+
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);}
+.modal .box{width:90%;max-width:360px;background:rgba(15,36,52,0.95);padding:18px;border-radius:12px;text-align:center;border:2px solid rgba(0,230,255,0.08);}
+.spinner{width:56px;height:56px;border-radius:50%;margin:10px auto 16px;border:6px solid rgba(255,255,255,0.06);border-top-color:var(--glow);animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+/* ✖ Cancel Button Styling */
+#cancelAd {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 20px;
+  background: linear-gradient(180deg, rgba(255,87,87,0.12), rgba(255,87,87,0.05));
+  border: 2px solid rgba(255,87,87,0.25);
+  border-radius: 10px;
+  color: #ffbdbd;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,87,87,0.2);
+  transition: all 0.15s ease;
+}
+
+#cancelAd:hover {
+  background: linear-gradient(180deg, rgba(255,87,87,0.2), rgba(255,87,87,0.08));
+  border-color: rgba(255,87,87,0.35);
+  box-shadow: 0 0 14px rgba(255,87,87,0.35);
+}
+
+#cancelAd:active {
+  transform: translateY(2px);
+  opacity: 0.9;
+}
+#cancelAd {
+  background: linear-gradient(180deg, rgba(0,230,255,0.1), rgba(0,200,255,0.05));
+  border: 2px solid rgba(0,230,255,0.25);
+  color: var(--glow);
+  box-shadow: 0 0 12px rgba(0,230,255,0.2);
+}

@@ -1,0 +1,89 @@
+#menu-wrapper {
+  width: 1080px;
+  height: 1920px;
+  max-width: 100vw;
+  max-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Layout divided into 3 rows */
+#menu-layout {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.menu-row {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row1 {
+  pointer-events: none; /* keeps bg clickable but not blocked */
+}
+
+/* --- Move buttons up slightly --- */
+.row3 {
+  padding-bottom: 8vh; /* moves buttons upward */
+}
+
+/* Buttons layout */
+#menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+/* === MODERN BUTTON STYLE === */
+#menu-buttons button {
+  position: relative;
+  width: 260px;
+  height: 90px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 2px solid #00ffff; /* neon border */
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+/* Hover/active glow */
+#menu-buttons button:hover {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+  transform: scale(1.05);
+}
+
+/* Tap feedback on mobile */
+#menu-buttons button:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}

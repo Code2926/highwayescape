@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HighwayEscape Settings</title>
+  <link rel="stylesheet" href="../css/settings.css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/mobile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Back arrow -->
+  <div class="back-arrow" id="backArrow">
+    <img src="../assets/images/ui/back_arrow.png" alt="Back">
+  </div>
+
+  <div class="settings-container">
+    <h1>SETTINGS</h1>
+
+    <div class="toggle-group">
+      <span>Music:</span>
+      <div class="toggle-switch" id="musicToggle"></div>
+    </div>
+
+    <div class="toggle-group">
+      <span>Sound Effects:</span>
+      <div class="toggle-switch" id="sfxToggle"></div>
+    </div>
+
+    <button class="reset-btn" id="resetBtn">Reset Progress</button>
+
+    <div class="score-section">
+      <button class="score-btn" id="scoreButton">View High Score</button>
+      <div class="score-panel" id="scorePanel">High Score: 0</div>
+    </div>
+  </div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/audio.js"></script>
+  <script src="../js/settings.js"></script>
+
+</body>
+</html>

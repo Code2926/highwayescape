@@ -1,0 +1,58 @@
+/* ------------------------------
+   Mobile scaling
+-------------------------------*/
+@media (max-width: 1080px), (max-height: 1920px) {
+  #menu-wrapper, #splash-wrapper {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .menu-bg, .splash-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .row3 {
+    padding-bottom: 6vh;
+  }
+
+  #menu-buttons {
+    gap: 4vh;
+  }
+
+  #menu-buttons button {
+    width: 60vw;
+    height: 8vh;
+    font-size: 4vw;
+    border-width: 2px;
+  }
+}
+
+/* ------------------------------
+   Desktop scaling with black bars
+-------------------------------*/
+@media (min-aspect-ratio: 9/16) {
+  #menu-wrapper, #splash-wrapper {
+    width: auto;
+    height: 100vh;
+    aspect-ratio: 9 / 16;
+    background-color: black;
+  }
+
+  .menu-bg, .splash-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .row3 {
+    padding-bottom: 8vh;
+  }
+
+  #menu-buttons button {
+    width: 260px;
+    height: 90px;
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highway Escape - Game</title>
+<link rel="stylesheet" href="../css/game.css">
+<link rel="stylesheet" href="../css/games.css">
+</head>
+<body>
+<div id="game-screen">
+
+  <!-- Road background -->
+  <div id="road"></div>
+
+  <!-- Player car -->
+  <img id="playerCar" src="" alt="Player Car">
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="coins">
+      <span class="dot"><img src="../assets/images/ui/coin.png" alt="$"></span>
+      <span id="coinCount">0</span>
+    </div>
+    <div class="score">Score: <span id="score">0</span></div>
+  </div>
+
+  <!-- Controls -->
+  <div id="controls">
+    <button id="leftBtn">&#8592;</button>
+    <button id="rightBtn">&#8594;</button>
+  </div>
+
+</div>
+
+<script src="../js/store.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/game.js"></script>
+</body>
+</html>

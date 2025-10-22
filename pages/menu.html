@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Highway Escape - Menu</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/mobile.css">
+</head>
+<body>
+  <div id="menu-wrapper">
+    <img src="../assets/images/ui/menu_bg.png" alt="Highway Escape Menu" class="menu-bg">
+
+    <!-- Three-row layout -->
+    <div id="menu-layout">
+      <div class="menu-row row1"></div> <!-- empty (title in bg image) -->
+      <div class="menu-row row2"></div> <!-- spacing -->
+      <div class="menu-row row3">
+        <div id="menu-buttons">
+          <button id="play-btn">Play</button>
+          <button id="garage-btn">Garage</button>
+          <button id="settings-btn">Settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include audio.js BEFORE using Sound -->
+  <script src="../js/audio.js"></script>
+  <script>
+    // Ensure Sound object exists before using
+    if (typeof Sound !== 'undefined') {
+      // First tap triggers music on mobile (autoplay policy)
+      document.addEventListener('click', () => {
+        Sound.playMusic();
+      }, { once: true });
+    }
+
+    // Button navigation
+    const buttons = [
+      { id: 'play-btn', url: 'game.html' },
+      { id: 'garage-btn', url: 'garage.html' },
+      { id: 'settings-btn', url: 'settings.html' }
+    ];
+
+    buttons.forEach(b => {
+      const el = document.getElementById(b.id);
+      if (el) {
+        el.addEventListener('click', () => {
+          if (typeof Sound !== 'undefined') Sound.playClick();
+          window.location.href = b.url;
+        });
+      }
+    });
+  </script>
+</body>
+</html>

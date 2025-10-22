@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HighwayEscape — Garage</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/garage.css">
+</head>
+<body>
+<div class="app" role="application" aria-label="Garage screen">
+
+  <!-- 🔙 Back Button -->
+  <div class="back-arrow" id="backArrow">
+    <img src="../assets/images/ui/back_arrow.png" alt="Back">
+  </div>
+
+  <div class="top">
+    <div class="title">GARAGE</div>
+    <div class="coins">
+      <span class="dot"><img src="../assets/images/ui/coin.png" alt="$"></span>
+      <span id="coinCount">0</span>
+    </div>
+  </div>
+
+  <div class="panel" id="panel">
+    <div class="tabs" role="tablist">
+      <div class="tab active" data-tab="cars" role="tab" tabindex="0">CARS</div>
+      <div class="tab" data-tab="roads" role="tab" tabindex="0">ROADS</div>
+    </div>
+
+    <div class="content">
+      <!-- CARS VIEW -->
+      <div id="carsView">
+        <div class="grid scrollable" id="carGrid"></div>
+
+        <div class="action">
+          <div id="actionBtn" class="big-btn">Select Car</div>
+          <div id="altBtn" class="big-btn secondary">Unlock</div>
+          <div class="note" id="carNote">Tap a car to select. Locked cars show a lock or ads.</div>
+        </div>
+      </div>
+
+      <!-- ROADS VIEW -->
+      <div id="roadsView" style="display:none">
+        <div class="grid scrollable" id="roadsGrid"></div>
+        <div class="note" id="roadNote">Tap a road to select or unlock.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad Modal -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="box" role="dialog" aria-modal="true">
+    <div style="font-weight:700;color:#00eaff;margin-bottom:6px" id="modalTitle">Watch Ad</div>
+    <div class="spinner" id="spinner"></div>
+    <div id="modalText">Watching ad to unlock...</div>
+    <div style="margin-top:12px">
+      <button id="cancelAd">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/store.js"></script>
+<script src="../js/garage.js"></script>
+</body>
+</html>
