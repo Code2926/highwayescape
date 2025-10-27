@@ -2,7 +2,6 @@
    SETTINGS PAGE — Highway Escape Theme Sync (Garage V3.4)
    ========================================================== */
 
-/* tokens (imported from garage.css) */
 :root {
   --bg-1: #04121a;
   --bg-2: #06232e;
@@ -25,7 +24,7 @@ html, body {
   color: var(--neon);
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* changed from center — allows full width */
+  align-items: stretch;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -63,7 +62,7 @@ html, body {
   flex-direction: column;
   gap: clamp(14px, 1.5vw, 22px);
   align-items: center;
-  width: 98%; /* now stretches almost full */
+  width: 96%; /* almost full width */
   max-width: 1300px;
   text-align: center;
   transition: all 0.3s ease;
@@ -72,9 +71,19 @@ html, body {
 /* subtle scaling for large screens */
 @media (min-width: 1600px) {
   .settings-box {
-    width: 96%;
+    width: 94%;
     max-width: 1400px;
     padding: clamp(24px, 2vw, 40px);
+  }
+}
+
+/* same visual balance for mobile */
+@media (max-width: 768px) {
+  .settings-box {
+    width: 96%;
+    margin: 20px auto 0;
+    padding: clamp(18px, 4vw, 24px);
+    max-width: none; /* prevents it from staying small */
   }
 }
 
@@ -157,7 +166,7 @@ html, body {
   transform: translateY(-3px);
 }
 
-/* variant: main menu button */
+/* main menu */
 .main-menu-btn {
   border-color: var(--accent);
   color: var(--accent);
@@ -169,7 +178,7 @@ html, body {
   box-shadow: 0 0 25px rgba(255,210,77,0.4);
 }
 
-/* reset progress (red hover) */
+/* reset progress */
 #resetBtn {
   background: transparent;
   border: 1px solid rgba(255, 77, 77, 0.25);
@@ -200,14 +209,4 @@ html, body {
   margin-top: 6px;
   font-size: clamp(1rem, 1.1vw, 1.2rem);
   text-shadow: 0 0 8px rgba(0,234,255,0.3);
-}
-
-/* ==============================
-   RESPONSIVE
-   ============================== */
-@media (max-width: 768px) {
-  .settings-box {
-    width: 98%;
-    padding: clamp(16px, 4vw, 24px);
-  }
 }
