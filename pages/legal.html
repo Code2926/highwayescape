@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal & Info — Highway Escape</title>
+  <link rel="stylesheet" href="../css/legal.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+
+<div class="app">
+  <div class="top">
+    <h1 class="title">Legal & Info</h1>
+  </div>
+
+  <div class="panel">
+    <div class="scroll-content">
+
+      <!-- FAQ Section -->
+      <section id="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="accordion">
+
+          <div class="accordion-item">
+            <button class="accordion-header">What is Highway Escape?</button>
+            <div class="accordion-content">
+              <p>Highway Escape is an arcade-style driving game where players race across themed roads, earn coins, and unlock new cars, tracks, and challenges.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">Is my data stored or shared?</button>
+            <div class="accordion-content">
+              <p>We do not sell or share personal data. Any analytics collected are anonymous and only used to improve gameplay experience and server performance.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">How do I report a bug or issue?</button>
+            <div class="accordion-content">
+              <p>You can use the Support page inside the game or on our website to report technical issues or glitches. Screenshots help us fix problems faster.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">Can I use game assets for my own project?</button>
+            <div class="accordion-content">
+              <p>All game assets, including art, code, and sounds, are protected by license. Please contact us for permission before reuse or modification.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <hr />
+
+      <!-- Privacy Policy -->
+      <section id="privacy">
+        <h2 class="section-title">Privacy Policy</h2>
+        <p>
+          We respect your privacy. This policy explains how information is collected, used, and safeguarded when you interact with Highway Escape.
+        </p>
+        <p>
+          Information collected includes basic gameplay metrics, anonymous usage data, and in some cases, optional player contact details if voluntarily submitted through forms or support tickets.
+        </p>
+        <p>
+          We never sell user data to third parties. Any data shared with service providers (for hosting, analytics, or updates) is handled securely under standard privacy compliance frameworks.
+        </p>
+        <p>
+          You may request deletion of any personal information stored on our servers by reaching out through our Support page.
+        </p>
+      </section>
+
+      <hr />
+
+      <!-- Terms of Use -->
+      <section id="terms">
+        <h2 class="section-title">Terms of Use</h2>
+        <p>
+          By accessing or using Highway Escape, you agree to follow these terms and all applicable laws. The game is provided “as is” without warranties of any kind.
+        </p>
+        <p>
+          Players are responsible for maintaining the security of their devices and accounts. Misuse, hacking, or exploitation of bugs for unfair advantage may lead to suspension.
+        </p>
+        <p>
+          We may update the Terms at any time. Continued use after updates implies acceptance of the latest version.
+        </p>
+      </section>
+
+      <hr />
+
+      <!-- License -->
+      <section id="license">
+        <h2 class="section-title">License</h2>
+        <p>
+          © Highway Escape Team. All rights reserved.  
+          Game assets, graphics, and code are licensed under a custom use license unless otherwise stated.
+        </p>
+        <p>
+          Portions of this software may include open-source libraries governed by their respective licenses (MIT, Apache, etc.). A full list of attributions is available upon request.
+        </p>
+        <p>
+          Unauthorized distribution, resale, or modification of game files without written consent is prohibited.
+        </p>
+      </section>
+
+      <hr />
+
+      <!-- Contact / Support -->
+      <section id="contact">
+        <h2 class="section-title">Contact & Support</h2>
+        <p>
+            If you have any questions regarding these terms or need help with your account, 
+            please visit our support page.
+        </p>
+        <a href="support.html" class="support-link">
+            Go to Support <i class="fas fa-arrow-right"></i>
+        </a>
+    </section>
+
+    </div>
+
+    <!-- Back to Menu -->
+    <div class="go-home-wrap">
+      <button class="big-go-home" onclick="location.href='menu.html'">Main Menu</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
