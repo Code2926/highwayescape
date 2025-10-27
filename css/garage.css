@@ -443,7 +443,7 @@ html,body{
 /* Desktop and up */
 @media (min-width:1025px){
   .tile{ max-width:130px; height:100px; }
-  .grid{ gap:30px; }
+  .grid{ gap:30px; max-width:720px ;}
   .app{ max-width:760px; }
 }
 
@@ -451,4 +451,3 @@ html,body{
   body{ display:flex; justify-content:center; align-items:center; }
   .app{ margin:auto; max-width:600px; }
 }
-
