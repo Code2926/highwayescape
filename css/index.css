@@ -1,0 +1,118 @@
+/* =============================================
+   index.css — Splash Screen (mobile-first, portrait)
+   ============================================= */
+
+/* Design tokens */
+:root{
+  --bg-black: #000000;
+  --neon: #00eaff;
+  --muted: #769fb0;
+  --glass: rgba(20,40,60,0.65);
+  --white: #ffffff;
+}
+
+/* Reset / baseline */
+*{ box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html,body{ height:100%; width:100%; margin:0; padding:0; background:var(--bg-black); overflow:hidden; font-family: "Orbitron", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+
+/* Wrapper that's always portrait-sized and centered */
+#splash-wrapper{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  background:var(--bg-black);
+  transition: opacity .8s ease;
+}
+
+/* Using an <img class="splash-bg"> in HTML — keep object-fit:cover to fill without stretching */
+.splash-bg{
+  width:100%;
+  height:100%;
+  object-fit: cover;          /* cover keeps aspect and fills */
+  object-position: center;
+  display:block;
+}
+
+/* center overlay potential (logo/loader) */
+.splash-inner{
+  position:absolute;
+  z-index: 5;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  pointer-events:none;
+}
+
+/* subtle fade */
+#splash-wrapper.fade-out{ opacity:0; pointer-events:none; }
+
+/* small devices default typography (360×800-ish base) */
+.splash-inner .logo{ width:46vw; max-width:300px; transform:translateY(0); }
+.splash-inner .loader{ width:48px; height:48px; border-radius:50%; border:4px solid rgba(255,255,255,0.08); border-top-color:var(--neon); animation: spin 1s linear infinite; }
+
+/* spin */
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+/* ---- Image swapping via CSS for high-res assets ----
+   We use CSS content:url() on the img element to swap if higher-res image is available.
+   Keep the <img class="splash-bg"> in HTML; CSS will replace its image if condition matches.
+*/
+@media (min-width: 768px) and (max-height: 1024px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_768x1024.png'); }
+}
+@media (min-width: 800px) and (max-height: 1280px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_800x1280.png'); }
+}
+@media (min-width: 810px) and (max-height: 1080px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_810x1080.png'); }
+}
+@media (min-width: 820px) and (max-height: 1180px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_820x1180.png'); }
+}
+@media (min-width: 1024px) and (max-height: 1366px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_1024x1366.png'); }
+}
+@media (min-width: 1280px) and (max-height: 800px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_1280x800.png'); }
+}
+@media (min-width: 1366px) and (max-height: 768px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_1366x768.png'); }
+}
+@media (min-width: 1440px) and (max-height: 900px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_1440x900.png'); }
+}
+@media (min-width: 1536px) and (max-height: 864px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_1536x864.png'); }
+}
+@media (min-width: 1920px) and (max-height: 1080px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_1920x1080.png'); }
+}
+@media (min-width: 2560px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_2560x1440.png'); }
+}
+@media (min-width: 3840px){
+  .splash-bg{ content: url('../assets/images/ui/splash_bg_3840x2160.png'); }
+}
+
+/* ---- Desktop locking to portrait (centered 9:16 canvas) ----
+   Ensure the view remains portrait (black bars left/right remain).
+*/
+@media (min-aspect-ratio: 9/16){
+  #splash-wrapper{
+    width: auto;
+    height: 100vh;
+    aspect-ratio: 9 / 16;
+    background: var(--bg-black);
+  }
+  .splash-bg{ width:100%; height:100%; object-fit:cover; }
+}
+
+/* small accessibility tweaks */
+@media (max-width: 360px){
+  .splash-inner .logo{ width:66vw; }
+  .splash-inner .loader{ width:42px; height:42px; border-width:3px; }
+}

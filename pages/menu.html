@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Highway Escape - Menu</title>
+  <link rel="stylesheet" href="../css/menu.css">
+</head>
+<body>
+  <div id="menu-wrapper">
+    <img src="../assets/images/ui/menu_bg.png" alt="Highway Escape Menu" class="menu-bg">
+
+    <div id="menu-layout">
+      <div class="menu-row row1"></div>
+      <div class="menu-row row2"></div>
+      <div class="menu-row row3">
+        <div id="menu-buttons">
+          <button id="play-btn">Play</button>
+          <button id="garage-btn">Garage</button>
+          <button id="store-btn">Store</button>
+          <button id="settings-btn">Settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/audio.js"></script>
+  <script>
+    document.addEventListener('click', () => {
+      if (typeof Sound !== 'undefined') Sound.playMusic();
+    }, { once: true });
+
+    const links = {
+      "play-btn": "game.html",
+      "garage-btn": "garage.html",
+      "store-btn": "store.html",
+      "settings-btn": "settings.html"
+    };
+
+    Object.entries(links).forEach(([id, url]) => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('click', () => {
+        if (typeof Sound !== 'undefined') Sound.playClick();
+        window.location.href = url;
+      });
+    });
+  </script>
+</body>
+</html>

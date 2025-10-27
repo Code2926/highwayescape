@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>HighwayEscape — Garage</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/garage.css">
+</head>
+<body>
+  <div id="bgParticles" aria-hidden="true"></div>
+
+  <div class="app" role="application" aria-label="Garage screen">
+    <header class="top">
+      <h1 class="title">GARAGE</h1>
+
+      <div class="hud" aria-hidden="false">
+        <div class="hud-item" title="Coins">
+          <img src="../assets/images/ui/coin.png" alt="coin" class="hud-icon" id="coinIcon">
+          <div class="hud-count" id="coinCount">0</div>
+        </div>
+
+        <div class="hud-item" title="Lifelines">
+          <img src="../assets/images/ui/toolkit.png" alt="toolkit" class="hud-icon" id="toolIcon">
+          <div class="hud-count" id="toolkitCount">0</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="panel" id="panel" role="main">
+      <nav class="tabs" role="tablist" aria-label="Garage tabs">
+        <button class="tab active" data-tab="cars" role="tab" aria-selected="true">CARS</button>
+        <button class="tab" data-tab="roads" role="tab" aria-selected="false">ROADS</button>
+      </nav>
+
+      <section class="content">
+        <div class="grid-wrap">
+          <div id="carsView" class="view" aria-hidden="false">
+            <div id="carGrid" class="grid" tabindex="0" aria-label="Cars grid"></div>
+          </div>
+
+          <div id="roadsView" class="view" aria-hidden="true" style="display:none">
+            <div id="roadsGrid" class="grid" tabindex="0" aria-label="Roads grid"></div>
+          </div>
+
+          <div class="go-home-wrap">
+            <button id="goHomeBtn" class="btn big-go-home">Main Menu</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="detailPanel" class="detail" role="dialog" aria-hidden="true">
+    <div class="detail-row">
+      <div id="detailPreview" class="preview" aria-hidden="true"></div>
+      <div class="meta">
+        <h3 id="detailTitle">Item</h3>
+        <p id="detailDesc">Tap an item to view details and unlock options.</p>
+      </div>
+      <div class="price-wrap">
+        <div class="muted">Price</div>
+        <div id="detailPrice" class="price">0</div>
+      </div>
+    </div>
+
+    <div class="detail-actions">
+      <button id="detailPrimary" class="btn primary">Select</button>
+      <button id="detailAlt" class="btn alt">Watch Ads</button>
+      <button id="detailClose" class="btn ghost">Close</button>
+    </div>
+  </div>
+
+  <div id="sparks" class="sparks" aria-hidden="true"></div>
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-box">
+      <div id="modalLoader" class="loader-ring" aria-hidden="true"><span></span></div>
+      <div id="modalText" class="modal-text">Please wait</div>
+      <div class="modal-actions">
+        <button id="cancelAd" class="btn cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/garage.js"></script>
+</body>
+</html>

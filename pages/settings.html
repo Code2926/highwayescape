@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#04121a">
+  <meta name="msapplication-navbutton-color" content="#04121a">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#04121a">
+  <meta name="description" content="Highway Escape Settings — tune your experience with neon precision.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport"content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Highway Escape - Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="../css/settings.css">
+</head>
+<body>
+  <!-- Page Title -->
+  <h1 class="page-title">SETTINGS</h1>
+
+  <!-- Main Grid Box -->
+  <div class="settings-box">
+    
+    <!-- Toggles -->
+    <div class="setting-row">
+      <span>Music</span>
+      <div class="toggle-switch" id="musicToggle"></div>
+    </div>
+
+    <div class="setting-row">
+      <span>Sound Effects</span>
+      <div class="toggle-switch" id="sfxToggle"></div>
+    </div>
+
+    <!-- High Score -->
+    <div class="score-section">
+      <button id="scoreButton" class="neon-btn full">View High Score</button>
+      <div id="scorePanel" class="score-panel">High Score: 0</div>
+    </div>
+
+    <!-- Network Status -->
+    <div class="setting-row network">
+      <span>Network Status</span>
+      <span id="networkStatus" class="status-text">Checking...</span>
+    </div>
+
+    <!-- Reset Button -->
+    <button class="neon-btn full" id="resetBtn">Reset Progress</button>
+
+    <!-- Support & Legal -->
+    <button class="neon-btn full" id="supportBtn">Support</button>
+    <button class="neon-btn full" id="legalBtn">Privacy & Terms</button>
+
+    <!-- Back to Menu -->
+    <button class="neon-btn full main-menu-btn" id="mainMenuBtn">Main Menu</button>
+  </div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/audio.js"></script>
+  <script src="../js/settings.js"></script>
+</body>
+</html>

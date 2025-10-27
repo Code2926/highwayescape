@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Highway Escape - Loading</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <div id="splash-wrapper">
+    <img src="assets/images/ui/splash_bg.png" alt="Highway Escape" class="splash-bg">
+  </div>
+
+  <script src="js/audio.js"></script>
+  <script>
+    const splash = document.getElementById('splash-wrapper');
+    setTimeout(() => {
+      splash.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = "pages/menu.html";
+      }, 800);
+    }, 5000);
+
+    try { Sound.playMusic(); } catch(e){ console.warn('Music blocked'); }
+  </script>
+</body>
+</html>

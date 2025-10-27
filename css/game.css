@@ -1,0 +1,347 @@
+/* ====================================================
+   game.css — Game screen (final production, hover fixed)
+   ==================================================== */
+
+/* tokens */
+:root{
+  --bg: #022233;
+  --panel: rgba(15,36,52,0.95);
+  --neon: #00eaff;
+  --accent: #ffd24d;
+  --danger: #ff4d4d;
+}
+
+/* base */
+*{ box-sizing:border-box; }
+html,body{
+  height:100%; width:100%;
+  margin:0; padding:0;
+  background:var(--bg);
+  font-family:"Orbitron","Poppins",sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+
+/* wrapper always full viewport */
+#game-wrapper{
+  position:relative;
+  width:100vw; height:100vh;
+  display:block;
+  overflow:hidden;
+  background:var(--bg);
+}
+
+/* canvas fills wrapper — maintain aspect with JS scaling */
+canvas#gameCanvas{
+  width:100%;
+  height:100%;
+  display:block;
+  background:var(--bg);
+}
+
+/* ===========================================
+   Dynamic Car Scaling — fits every screen
+   =========================================== */
+.car, .enemy-car {
+  position:absolute;
+  bottom:15vh;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:20;
+}
+.car img, .enemy-car img {
+  display:block;
+  width:22vw;
+  max-width:160px;
+  height:auto;
+  object-fit:contain;
+  image-rendering:auto;
+  transition: width .25s ease, transform .25s ease;
+}
+
+/* adjust car size by screen */
+@media (max-width: 360px){
+  .car img, .enemy-car img { width:30vw; max-width:130px; }
+}
+@media (min-width: 375px) and (max-width: 414px){
+  .car img, .enemy-car img { width:26vw; max-width:140px; }
+}
+@media (min-width: 768px) and (max-height: 1366px){
+  .car img, .enemy-car img { width:20vw; max-width:170px; }
+}
+@media (min-width: 1024px){
+  .car img, .enemy-car img { width:18vw; max-width:200px; }
+}
+@media (min-width: 1920px){
+  .car img, .enemy-car img { width:16vw; max-width:220px; }
+}
+
+/* ===========================================
+   Score UI
+   =========================================== */
+
+#scoreUI {
+  position: absolute;
+  top: 10px; left: 12px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* wider gap for two icons */
+  color: var(--accent);
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+.score-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coin-img,
+.toolkit-img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.toolkit-img {
+  filter: drop-shadow(0 0 4px rgba(0, 234, 255, 0.4));
+}
+
+
+/* ===========================================
+   Pause / Game Over overlays
+   =========================================== */
+.pause-icon{
+  position:absolute;
+  top:10px; right:12px;
+  z-index:45;
+  width:48px; height:48px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:12px;
+  border:2px solid rgba(0,230,255,0.14);
+  background: linear-gradient(180deg, rgba(0,230,255,0.06), rgba(0,230,255,0.02));
+  color:var(--neon);
+  font-size:20px;
+  cursor:pointer;
+  box-shadow: 0 8px 20px rgba(0,230,255,0.06);
+  transition: box-shadow .15s ease, background .15s ease;
+}
+.pause-icon:hover{
+  background: linear-gradient(180deg, rgba(0,230,255,0.12), rgba(0,230,255,0.04));
+  box-shadow: 0 0 18px rgba(0,230,255,0.3), 0 0 36px rgba(0,230,255,0.15);
+}
+
+/* overlay container */
+.pause-menu{
+  position:absolute;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,0.7);
+  z-index:80;
+  animation: fadeIn .3s ease forwards;
+}
+.pause-menu.show{ display:flex; }
+
+@keyframes fadeIn {
+  from{ opacity:0; transform:scale(0.9); }
+  to{ opacity:1; transform:scale(1); }
+}
+
+/* pause/gameover box */
+.pause-box{
+  background: var(--panel);
+  padding:26px;
+  border-radius:16px;
+  border:2px solid rgba(0,230,255,0.08);
+  text-align:center;
+  box-shadow: 0 0 35px rgba(0,230,255,0.12), 0 30px 80px rgba(0,0,0,0.6);
+  transform: translateY(-10px);
+  animation: popUp .35s ease forwards;
+}
+@keyframes popUp{
+  from{ opacity:0; transform:translateY(40px) scale(0.9); }
+  to{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+.pause-box h2{
+  color:var(--neon);
+  font-size:2rem;
+  margin:0 0 10px 0;
+  text-shadow:0 0 12px rgba(0,230,255,0.15);
+}
+.pause-box p{
+  color:#c8e7ff;
+  font-size:1rem;
+  margin-bottom:14px;
+  opacity:0.9;
+}
+
+/* buttons inside overlays */
+.big-btn{
+  display:inline-block;
+  width:240px;
+  padding:12px 14px;
+  margin-top:10px;
+  border-radius:12px;
+  border:2px solid rgba(0,230,255,0.12);
+  background: linear-gradient(180deg, rgba(0,230,255,0.06), rgba(0,230,255,0.02));
+  color:var(--neon);
+  font-weight:700;
+  cursor:pointer;
+  transition: box-shadow .2s ease, background .2s ease, color .2s ease;
+  box-shadow: 0 0 14px rgba(0,230,255,0.08);
+}
+
+/* ✨ new hover effect — glow only (no movement) */
+.big-btn:hover{
+  background: linear-gradient(180deg, rgba(0,230,255,0.14), rgba(0,230,255,0.04));
+  color:#bffeff;
+  box-shadow: 0 0 22px rgba(0,230,255,0.4), 0 0 60px rgba(0,230,255,0.2);
+}
+.big-btn.secondary{
+  background: linear-gradient(180deg, rgba(255,87,87,0.08), rgba(255,87,87,0.04));
+  border-color: rgba(255,87,87,0.12);
+  color:var(--danger);
+}
+.big-btn.secondary:hover{
+  background: linear-gradient(180deg, rgba(255,87,87,0.12), rgba(255,87,87,0.06));
+  color:#ffbcbc;
+  box-shadow: 0 0 22px rgba(255,87,87,0.4), 0 0 60px rgba(255,87,87,0.2);
+}
+
+/* ---------- Revive Overlay ---------- */
+.ring-loader{
+  position:relative;
+  width:80px;height:80px;
+  margin:12px auto 20px;
+}
+.ring-loader .ring{
+  width:100%;height:100%;
+  border:6px solid rgba(0,234,255,0.1);
+  border-top:6px solid var(--neon);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+#reviveTimer{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:1.3rem;color:var(--accent);
+}
+
+
+/* game-over styling (special variant) */
+#crashOverlay .pause-box{
+  border-color: rgba(255,77,77,0.18);
+  box-shadow: 0 0 35px rgba(255,77,77,0.2), 0 30px 80px rgba(0,0,0,0.6);
+}
+#crashOverlay h2{
+  color: var(--danger);
+  text-shadow: 0 0 14px rgba(255,77,77,0.18);
+}
+
+img[src*="explosion"] {
+  filter: drop-shadow(0 0 12px rgba(255, 120, 40, 0.6));
+  animation: explodePop 0.8s ease forwards;
+}
+
+@keyframes explodePop {
+  0% { transform: scale(0.6) rotate(0deg); opacity: 0.3; }
+  40% { transform: scale(1.2) rotate(15deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 0.9; }
+}
+
+
+/* ===========================================
+   Bottom Controls
+   =========================================== */
+#controls{
+  position:absolute;
+  bottom:34px;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  padding:0 18px;
+  z-index:30;
+  pointer-events:auto;
+}
+#controls button{
+  width:86px; height:86px;
+  border-radius:50%;
+  border:none;
+  background: rgba(255,255,255,0.06);
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+  display:flex;
+  align-items:center; justify-content:center;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+  transition: background .2s ease, box-shadow .2s ease;
+}
+#controls button:hover{
+  background: rgba(0,234,255,0.1);
+  box-shadow: 0 0 24px rgba(0,234,255,0.3);
+}
+#controls button:active{
+  background: rgba(0,234,255,0.18);
+}
+
+/* ===========================================
+   Responsive tuning
+   =========================================== */
+@media (max-width: 360px){
+  .pause-box{ padding:20px; }
+  .pause-box h2{ font-size:1.6rem; }
+  .big-btn{ width:200px; padding:10px; font-size:15px; }
+  .pause-icon{ width:44px; height:44px; }
+  #controls button{ width:70px; height:70px; font-size:28px; }
+  .car img{ width:28vw; }
+}
+
+@media (min-width: 375px) and (max-width: 414px){
+  .pause-box{ padding:22px; }
+  .pause-box h2{ font-size:1.8rem; }
+  .big-btn{ width:220px; font-size:16px; }
+  .car img{ width:25vw; }
+}
+
+@media (min-width: 768px) and (max-height: 1366px){
+  #game-wrapper{
+    width:420px;
+    height:746px;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,0.7);
+    margin:auto;
+  }
+  .pause-box{ transform:scale(1.1); }
+  .pause-box h2{ font-size:2.4rem; }
+  .big-btn{ width:260px; font-size:18px; }
+  .car img{ width:20vw; max-width:170px; }
+}
+
+@media (min-width: 1366px){
+  #game-wrapper{ width:560px; height:995px; }
+  .pause-box{ transform:scale(1.15); }
+  .pause-box h2{ font-size:2.6rem; }
+  .big-btn{ width:280px; font-size:19px; }
+  .car img{ width:16vw; max-width:200px; }
+}
+
+@media (min-width: 1920px){
+  #game-wrapper{ width:640px; height:1138px; }
+  .pause-box h2{ font-size:2.8rem; }
+  .big-btn{ width:300px; font-size:20px; }
+  .car img{ width:14vw; max-width:220px; }
+}
+
+/* lock portrait canvas */
+@media (min-aspect-ratio: 9/16){
+  body{ display:flex; align-items:center; justify-content:center; }
+  #game-wrapper{ margin:auto; }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Highway Escape - Game</title>
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+<body>
+  <div id="game-wrapper">
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="scoreUI">
+      <!-- Coins -->
+       <div class="score-item">
+        <img src="../assets/images/ui/coin.png" alt="coin" class="coin-img">
+        <span id="coinCount">0</span>
+      </div>
+      
+      <!-- Toolkits -->
+       <div class="score-item">
+        <img src="../assets/images/ui/toolkit.png" alt="toolkit" class="toolkit-img">
+        <span id="toolkitCount">0</span>
+      </div>
+    </div>
+
+    <button id="pauseIcon" class="pause-icon">❚❚</button>
+
+    <div id="pauseMenu" class="pause-menu">
+      <div class="pause-box">
+        <h2>PAUSED</h2>
+        <button id="resumeBtn" class="big-btn">Resume</button>
+        <button id="menuBtn" class="big-btn secondary">Main Menu</button>
+      </div>
+    </div>
+
+    <div id="crashOverlay" class="pause-menu">
+      <div class="pause-box">
+        <h2>Game Over</h2>
+        <button id="restartBtn" class="big-btn">Restart</button>
+        <button id="mainMenuBtn" class="big-btn secondary">Main Menu</button>
+      </div>
+    </div>
+  </div>
+  <!-- Revive Overlay -->
+<div id="reviveOverlay" class="pause-menu">
+  <div class="pause-box">
+    <h2>Continue?</h2>
+
+    <div class="ring-loader">
+      <div class="ring"></div>
+      <span id="reviveTimer">10</span>
+    </div>
+
+    <button id="useToolkitBtn" class="big-btn">🧰 Use Lifeline</button>
+    <button id="watchAdBtn" class="big-btn secondary">📺 Watch Ad</button>
+    <p id="adStatusMsg" style="margin-top:8px;color:#c8e7ff;font-size:0.9rem;"></p>
+  </div>
+</div>
+
+
+  <script src="../js/game.js"></script>
+  <script src="../js/garage.js"></script>
+  <script src="../js/store.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/config.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toolkitCountEl = document.getElementById('toolkitCount');
+    if (toolkitCountEl) {
+      toolkitCountEl.textContent = localStorage.getItem('toolkits') || '0';
+    }
+  });
+</script>
+</body>
+</html>
