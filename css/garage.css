@@ -30,7 +30,7 @@ html,body{
 .app{
   position:relative;
   width:100%;
-  max-width:480px;
+  max-width:720px;
   height:100vh;
   margin:0 auto;
   padding:18px;
@@ -119,6 +119,7 @@ html,body{
   gap:12px;
   padding:6px;
   width:100%;
+  max-width:720px;
   justify-items:center;
   overflow-y:auto;
   overflow-x:hidden;
@@ -172,7 +173,7 @@ html,body{
   transform:translateX(-50%) translateY(108%);
   bottom:16px;
   width:calc(100% - 40px);
-  max-width:420px;
+  max-width:720px;
   border-radius:14px;
   padding:16px 12px 18px 12px;
   background:linear-gradient(180deg,#06121a,#071923);
@@ -439,9 +440,11 @@ html,body{
   .panel{ padding:16px; }
 }
 
-@media (min-width:1025px) and (max-width:1366px){
-  .tile{ max-width:150px; height:130px; }
-  .app{ max-width:600px; }
+/* Desktop and up */
+@media (min-width:1025px){
+  .tile{ max-width:130px; height:100px; }
+  .grid{ gap:16px; }
+  .app{ max-width:760px; }
 }
 
 @media (min-width:1367px){
