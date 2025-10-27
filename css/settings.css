@@ -1,5 +1,6 @@
 /* ==========================================================
-   SETTINGS PAGE — Highway Escape Theme Sync (Garage V3.4)
+   SETTINGS PAGE — Highway Escape Theme Sync (Garage V3.7)
+   All rows (including Network Status) stay left-right aligned
    ========================================================== */
 
 :root {
@@ -13,7 +14,7 @@
   --radius: 14px;
 }
 
-/* baseline */
+/* ========== BASE RESET ========== */
 * { box-sizing: border-box; }
 html, body {
   height: 100%;
@@ -25,13 +26,11 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  overflow-y: auto;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
-/* ==============================
-   PAGE TITLE
-   ============================== */
+/* ========== PAGE TITLE ========== */
 .page-title {
   position: sticky;
   top: 15px;
@@ -47,9 +46,7 @@ html, body {
   margin-bottom: 6px;
 }
 
-/* ==============================
-   SETTINGS PANEL
-   ============================== */
+/* ========== SETTINGS BOX ========== */
 .settings-box {
   background: var(--panel);
   border-radius: var(--radius);
@@ -62,38 +59,17 @@ html, body {
   flex-direction: column;
   gap: clamp(14px, 1.5vw, 22px);
   align-items: center;
-  width: 96%; /* almost full width */
+  width: 96%;
   max-width: 1300px;
   text-align: center;
   transition: all 0.3s ease;
 }
 
-/* subtle scaling for large screens */
-@media (min-width: 1600px) {
-  .settings-box {
-    width: 94%;
-    max-width: 1400px;
-    padding: clamp(24px, 2vw, 40px);
-  }
-}
-
-/* same visual balance for mobile */
-@media (max-width: 768px) {
-  .settings-box {
-    width: 96%;
-    margin: 20px auto 0;
-    padding: clamp(18px, 4vw, 24px);
-    max-width: none; /* prevents it from staying small */
-  }
-}
-
-/* ==============================
-   SETTING ROWS
-   ============================== */
+/* ========== SETTING ROWS ========== */
 .setting-row {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* label left, value/toggle right */
   align-items: center;
   padding: clamp(10px, 1.3vw, 14px) clamp(14px, 2vw, 18px);
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
@@ -105,14 +81,27 @@ html, body {
   font-size: clamp(0.9rem, 1vw, 1rem);
   box-shadow: 0 6px 18px rgba(0,0,0,0.4);
   transition: background 0.25s ease;
+  gap: 10px;
+  flex-wrap: nowrap;
 }
-.setting-row:hover {
-  background: rgba(0,230,255,0.05);
+.setting-row:hover { background: rgba(0,230,255,0.05); }
+
+/* Fix text alignment and prevent wrapping */
+.setting-row span:first-child {
+  flex: 1;
+  text-align: left;
+}
+.setting-row span:last-child {
+  text-align: right;
 }
 
-/* ==============================
-   TOGGLE SWITCH
-   ============================== */
+/* Special case: network status text stays right aligned */
+.setting-row.network #networkStatus {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+/* ========== TOGGLE SWITCH ========== */
 .toggle-switch {
   width: 52px;
   height: 28px;
@@ -122,6 +111,7 @@ html, body {
   position: relative;
   cursor: pointer;
   transition: background 0.3s, box-shadow 0.3s;
+  flex-shrink: 0;
 }
 .toggle-switch::after {
   content: '';
@@ -143,9 +133,7 @@ html, body {
   background: #fff;
 }
 
-/* ==============================
-   BUTTONS
-   ============================== */
+/* ========== BUTTONS ========== */
 .neon-btn {
   width: 100%;
   padding: clamp(10px, 1.5vw, 14px) 0;
@@ -166,7 +154,6 @@ html, body {
   transform: translateY(-3px);
 }
 
-/* main menu */
 .main-menu-btn {
   border-color: var(--accent);
   color: var(--accent);
@@ -178,7 +165,6 @@ html, body {
   box-shadow: 0 0 25px rgba(255,210,77,0.4);
 }
 
-/* reset progress */
 #resetBtn {
   background: transparent;
   border: 1px solid rgba(255, 77, 77, 0.25);
@@ -198,9 +184,7 @@ html, body {
   outline: none;
 }
 
-/* ==============================
-   SCORE PANEL
-   ============================== */
+/* ========== SCORE PANEL ========== */
 .score-section { width: 100%; }
 .score-panel {
   height: 0;
@@ -209,4 +193,35 @@ html, body {
   margin-top: 6px;
   font-size: clamp(1rem, 1.1vw, 1.2rem);
   text-shadow: 0 0 8px rgba(0,234,255,0.3);
+}
+
+/* ==========================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================== */
+
+@media (max-width: 480px) {
+  .page-title { font-size: 1.4rem; top: 10px; }
+  .settings-box { width: 95%; padding: 18px; margin: 15px auto 0; }
+  .setting-row { font-size: 0.9rem; padding: 10px 12px; }
+  .toggle-switch { transform: scale(0.9); }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .settings-box { width: 94%; padding: 20px; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .settings-box { width: 92%; padding: 24px; }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .settings-box { width: 90%; max-width: 1100px; }
+}
+
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .settings-box { width: 88%; max-width: 1300px; }
+}
+
+@media (min-width: 1920px) {
+  .settings-box { width: 84%; max-width: 1600px; padding: 40px; }
 }
